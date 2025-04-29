@@ -1,0 +1,83 @@
+---
+description: Apply this rule to the entire repository
+globs: 
+alwaysApply: true
+---
+
+# AI Coding Guidelines (Concise)
+
+**Objective:** Generate code aligning with `project/PRD.md` (architecture, style) & `project/digest.txt` (current state). Ensure work directly addresses tasks in `project/TASKS.md`.
+
+## 1. Core Principles
+
+* **Source of Truth:** Prioritize `project/PRD.md` and `project/digest.txt`.
+* **Task Focus:** Only implement tasks from `project/TASKS.md`. No unrelated changes unless requested.
+* **Context:** Analyze existing code before modifying/adding to ensure consistency.
+* **Explain:** Briefly outline non-trivial approaches before coding.
+* **Simplicity:** Write clean, clear, idiomatic, minimal code.
+* **Clarity:** Ask if requirements are unclear. Don't assume.
+
+## 2. File Structure
+
+* **Adherence:** Strictly follow `project/PRD.md` structure. `src/` for all source code.
+* **Changes:** Do not alter structure unless task requires & aligns with `PRD.md`.
+* **Paths:** Ensure relative file paths are correct.
+
+## 3. Code Standards & Style
+
+### 3.1. Best Practices
+
+* Follow language best practices and `project/PRD.md` style rules (`PRD.md` overrides). Focus on clarity, maintainability, efficiency, basic security/performance.
+
+### 3.2. Modularity
+
+* **DRY:** Avoid duplication via helpers/modules.
+* **File Size:** Keep files focused (<500 lines). Suggest refactor if large.
+* **Function Size:** Functions should be small, single-task focused.
+* **Imports:** Use clear, explicit, relative imports (if idiomatic). Verify paths.
+
+### 3.3. Language Specifics
+
+* **Type Hints:** Always use (Python/TS/Lua).
+* **Indentation:** 2 spaces.
+* **Function Calls:** No space before `()` (e.g., `myFunc()`).
+* **Readability:** Prefer clarity over dense one-liners.
+* **Naming & Scope:**
+  * Descriptive names. Default to narrowest scope.
+  * Avoid single-letter vars (except iterators `i, j, k` in short loops/scope). Prefer named vars for longer scopes.
+  * Use `_` for ignored vars.
+  * Follow idiomatic casing (`camelCase`/`snake_case` per language/PRD). `UPPER_CASE` for constants only.
+  * Prefix booleans: `is_`, `has_`, `should_`.
+* **File Header:** Add top comment with file purpose (not metadata).
+
+### 3.4. Error Handling
+
+* Implement robust error handling (per language/`PRD.md`). Handle errors gracefully.
+
+## 4. Documentation & Comments
+
+* **Docstrings:** Generate clear docstrings (purpose, params, returns) for public APIs.
+* **Inline Comments:** Use `#` or `//` primarily for the *why* of non-obvious code. Format: `# Reason: [Explanation]`.
+* **README:** Note if core changes require user to update `README.md`.
+
+## 5. Testing
+
+* **Requirement:** New features/fixes require tests.
+* **Framework:** Use project's standard framework (e.g., pytest, Jest).
+* **Location:** Tests in `/src/test` (or `/src/spec` for Lua), mirroring `src` structure (e.g., `src/utils/foo.js` -> `src/test/utils/foo_test.js`).
+* **Content:** Cover main cases, edge cases, errors. Keep test logic clear.
+* **Coverage:** Aim for high coverage on new/changed code. Note if impractical.
+* **Maintenance:** Update tests when modifying related code.
+
+## 6. Dependencies
+
+* **Changes:** Do not add/remove/update dependencies without instruction.
+* **Stack:** Use only `PRD.md` approved libraries/tech.
+
+## 7. AI Interaction
+
+* **Factuality:** Verify library/API/path info. Use MCP servers for reference. Don't invent. Confirm file existence.
+* **Safety:** Don't delete/overwrite large code blocks unless instructed/necessary. Prefer additive changes/refactors.
+* **Explain:** Briefly explain rationale for significant changes/refactors.
+* **Issues:** Report unclear/conflicting/infeasible requirements promptly.
+* **Complexity:** State **clearly** if task seems overly complex for AI generation.
