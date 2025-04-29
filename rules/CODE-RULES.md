@@ -106,7 +106,7 @@ Our goal is living documentation via executable tests that specify component beh
 ### 7.2. Interaction Guidelines
 
 * **Clarity:** Ask clarifying questions if requirements, context, or constraints are unclear. Do not make assumptions.
-* **Factuality & Verification:** Do not invent libraries, functions, APIs, or file paths. Verify the existence of files and modules (based on provided context) before referencing them. Use MCP servers if available for reference.
+* **Factuality & Verification:** Do not invent libraries, functions, APIs, or file paths. Verify the existence of files and modules (based on provided context) before referencing them. Use MCP servers if available for reference.a
 * **Code Safety:** Do not delete or overwrite existing code unless explicitly instructed or as a defined part of the current task in `project/TASKS.md`.
 * **Proactive Issue Reporting:** If you encounter significant roadblocks, errors, or ambiguity *during* implementation, report the issue promptly, explain the context, and suggest potential solutions or ask clarifying questions. Do not wait until the entire task attempt is complete if blocked.
 * **Model Capabilities:** If a task seems complex and might benefit from a more advanced model, state this clearly at the beginning of your response using **bold text**. (e.g., "**Suggestion: This refactoring task is complex and involves deep analysis of interactions. A more advanced model might provide a more robust solution.**")
