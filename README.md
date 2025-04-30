@@ -17,11 +17,9 @@ This is the workflow how you, the developer, will use this system to generate go
 
 1. **Fork and/or clone ruler-ai** to your development environment.
 2. **Copy and modify** [`CODE-RULES.md`](./CODE-RULES.md) for your needs manually into your project folder.
-3. **Setup development environment** by running `setup.py`.
-4. **Run generate_rules.py** to generate rules files for each IDE environment. _(TODO)_
-5. **Copy `project/`** into your project folder.
-6. **Modify** `PRD.md` and `TASKS.md` to your project needs.
-7. **Start coding!**
+3. **Copy `project/`** into your project folder.
+4. **Modify** `PRD.md` and `TASKS.md` to your project needs.
+5. **Start coding!**
 
 ---
 
@@ -46,16 +44,19 @@ This is the workflow how you, the developer, will use this system to generate go
 
 ## Manual Development Workflow
 
-For the developer condensing [`RULES.md`](./RULES.md) down into rules specific to each IDE:
+For the developer condensing [`CODE-RULES.md`](./CODE-RULES.md) down into rules specific to each IDE:
 
-1. Update [`RULES.md`](./RULES.md).
-2. Run this prompt to shorten for Windsurf/Roo:
+1. Update [`CODE-RULES.md`](./CODE-RULES.md).
+2. Run this prompt to shorten for Windsurf/Roo/GitHub:
 
 ```prompt
 Given the following AI IDE <RULES>, shorten the wording to save on tokens, but make sure the intent, spirit, and technical details of each guideline are kept so an AI can clearly understand it. Return these rules in markdown format that can be copy/pasted.
 <RULES>
-<!-- Content of RULES.md here -->
+<!-- Content of CODE-RULES.md here -->
 </RULES>
 ```
 
+3. Place output of prompt into [`CODE-RULES-CONDENSED.md`](./CODE-RULES-CONDENSED.md)
+4. Run `python update-rules.py`.
+5. Update your rules in your projects as needed.
 ---

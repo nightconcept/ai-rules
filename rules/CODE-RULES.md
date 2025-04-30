@@ -83,15 +83,21 @@ This structural requirement is foundational and takes precedence.
 
 ## 6. Testing
 
-Our goal is living documentation via executable tests that specify component behavior. Use the most common test framework for the language.
+The goal is living documentation via executable tests that specify system behavior. Use the most common and appropriate test framework for the programming language in use.
 
-* **Specify Behavior:** All new features (functions, classes, significant logic) or modifications require corresponding tests describing expected behavior.
+* **Behavior Specification:** Tests serve to specify the expected behavior of the system or component under test. The specific types of tests required (e.g., End-to-End, Unit, Integration), their scope, and when they should be implemented (e.g., for new features, bug fixes) are determined by the current project phase and testing strategy, as detailed in the `project/PRD.md`.
+
 * **Test Location:** Place tests in `/src/test` (or `/src/spec` for Lua), mirroring the source directory structure as defined in Section 4.
   * *Example:* Tests for `src/engine/my_module.js` go in `src/test/engine/my_module_test.js`.
   * *Example:* Lua specs for `src/engine/my_module.lua` go in `src/spec/engine/my_module_spec.lua`.
-* **Test Content:** Tests should clearly and concisely describe the expected behavior and cover all essential functionality, including common use cases, edge cases, and basic error handling where applicable.
-* **Test Coverage:** Strive for 100% statement coverage. If achieving this proves exceptionally difficult after several attempts, notify the user, identifying the specific lines/branches that remain uncovered and explaining the difficulty encountered.
-* **Updating Tests:** When modifying code, review and update corresponding tests to accurately reflect the *current* behavior. Outdated tests are detrimental.
+
+* **Test Content:** Tests should clearly and concisely describe the expected behavior relevant to the testing goals outlined in the PRD for the current phase. For the **prototype phase**, the primary focus is on automated End-to-End (E2E) tests that validate core application functionality.
+
+* **Testing Strategy & Coverage:** The overall testing strategy, including the required types of tests and any specific coverage targets, evolves with the project and is defined in the PRD.
+  * During the **prototype phase**, comprehensive unit testing and code coverage metrics (like statement coverage) are **not** the primary focus. Priority is given to ensuring core features work correctly via E2E tests.
+  * Specific coverage targets, such as striving for 100% statement coverage, will only apply when the project phase dictates the need for comprehensive unit testing in addition to E2E tests, as specified in `project/PRD.md`.
+
+* **Updating Tests:** When modifying code, review and update corresponding tests to accurately reflect the *current* expected behavior. Outdated or failing tests must be addressed promptly as they undermine the value of the test suite.
 
 ## 7. AI Interaction Protocols
 
