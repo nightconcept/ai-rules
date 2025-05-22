@@ -1,62 +1,60 @@
-# ruler-ai
+# Terra 🤖
 
-**ruler-ai** is a ruleset and project system generation tool for AI agents across multiple environments. This tool will help you generate rules files with an opinionated method to help you generate good, functional code.
+**Terra** is an Agile Project Management and Code Assistant system for AI agents across multiple environments. This methodology will help you generate Product Requirements Documents (PRDs) and Task Lists for prototypes and large projects with many features.
 
-## 🌍 Supported Environments
+## 🚀  Getting started with Terra
 
-- **Windsurf**: Comprehensive project management and code-assistant rules.
-- **Roo VSCode extension**: Uses the same rules and methods as Windsurf.
-- **GitHub Copilot**: Uses the same rules and methods as Windsurf.
-- **Cursor**: Focus on code-assistant (less project management) focused rules.
+### Requirements
 
----
+- Windsurf/Roo VSCode extension/GitHub Copilot/Cursor
+- Google Gemini Gems
+- Mise or Python 3.6+
 
-## 🚀  Getting started with ruler-ai
+### Setup Gemini Gems
 
-This is the workflow how you, the developer, will use this system to generate good code.
+1.  Run `mise install` if Python is not already on your system.
+2.  Run `mise run build` or `python scripts/build.py`.
+3.  Open Google Gemini's Gem page.
+4.  Create a new Gem.
+4.  From the `build/gem` folder, the `agent-prompt.txt` should be pasted into the instructions box. All other txt files should be added to the Knowledge box.
+5.  Start prompting.
 
-1. **Fork and/or clone ruler-ai** to your development environment.
-2. **Copy and modify** [`CODE-RULES.md`](./CODE-RULES.md) for your needs manually into your project folder.
-3. **Copy `project/`** into your project folder.
-4. **Modify** `PRD.md` and `TASKS.md` to your project needs.
-5. **Start coding!**
+### Setup Dev Agent Rules
 
----
+1.  Run `mise install` if Python 3.13+ is not already on your system.
+2.  Run `mise run build` or `python scripts/build.py`.
+3.  Copy over applicable files from `build/ide-rules` based on your IDE(s) to your project folders.
+4.  Start prompting. _(Note: Roo Code rules only)
 
-## 📚 How the Rules Work
+## Project Document Generation
 
-- **`.cursor/global.mdc`**: Concise, code-assistant-focused rules. Emphasizes working directly from the `project` folder for requirements, tasks, and state. Promotes clarity, minimal code, and always asks for clarification if requirements are unclear.
+Terra guides users through planning software projects using an AI assistant, the "Agile Project Planner," facilitated by a Google Gemini Gem. This assistant helps generate `PRD.md` (Product Requirements Document) and `TASKS.md` (Task List) files. The process is driven by user-selected workflows and templates.
 
-- **`.roo/rules-code/rules.md` & `.windsurfrules` & `.github/copilot-instructions.md`**: Full project management and code quality rules. Require agents to:
-  - Review `project/PRD.md` (architecture, style), `project/TASKS.md` (assignments), and optionally `project/digest.txt` (state) before coding.
-  - Present a plan before making changes.
-  - Only work on assigned tasks.
-  - Follow strict folder structure (`src/` for all code).
-  - Write tests, document decisions, and update the README as needed.
+**Core Functionality:**
 
----
+The AI assistant operates based on the following principles:
+-   **Workflow Selection:** The user chooses one of three workflows:
+    1.  **Prototyper:** For rapidly planning small-scale prototypes. Requires a `templates.txt` file with `<PROTO_PRD_TEMPLATE>` and `<TASKS_TEMPLATE>`.
+    2.  **Product Developer Workflow (PDW):** For planning the foundational platform of a new, larger product. Requires a `templates.txt` file with `<PROD_PRD_TEMPLATE>` and `<TASKS_TEMPLATE>`.
+    3.  **Feature Developer Workflow (FDW):** For planning a new feature for an existing product. Requires the main `PROD_PRD.md` of the existing platform and a `templates.txt` file with `<FEAT_PRD_TEMPLATE>` and `<TASKS_TEMPLATE>`.
+-   **Template-Driven Generation:** The structure and content of the `PRD.md` and `TASKS.md` files are strictly based on templates provided by the user in a `templates.txt` file. These templates are typically derived from the examples in the `gem/` folder:
+    -   [`PROD_PRD_TEMPLATE.md`](gem/PROD_PRD_TEMPLATE.md)
+    -   [`FEAT_PRD_TEMPLATE.md`](gem/FEAT_PRD_TEMPLATE.md)
+    -   [`PROTO_PRD_TEMPLATE.md`](gem/PROTO_PRD_TEMPLATE.md)
+    -   [`TASKS_TEMPLATE.md`](gem/TASKS_TEMPLATE.md)
+-   **Collaborative Process:** The AI engages in a dialogue with the user, asking clarifying questions and refining document drafts based on feedback.
+-   **Output:** The final outputs are clean Markdown-formatted `PRD.md` and `TASKS.md` files, placed in the project's working directory (e.g., `project/PRD.md`, `project/TASKS.md`).
 
-## 🗂️ The `project` Folder: The Source of Truth
+**Supporting Files:**
+-   **Agent Prompts & Rules**:
+    *   [`agent-prompt.md`](gem/agent-prompt.md): Provides the core instructions for the AI assistant.
+    *   [`DEV-RULES.md`](ide-rules/DEV-RULES.md): Contains specific rules for AI development agents (like Roo) to follow, ensuring consistency.
+-   **(Optional) `digest.txt`**: A summary of the current project state to provide quick context to the AI agent.
 
-- **`project/PRD.md`**: Product requirements, architecture, and project-specific style guide.
-- **`project/TASKS.md`**: Task assignments and tracking.
-- **(Optional) `project/digest.txt`**: Current project state or summary. Generated by [code2prompt](https://github.com/mufeedvh/code2prompt/) or any other equivalent tool.
+## References
 
-## Manual Development Workflow
+I was heavily inspired by the [BMAD Method](https://github.com/bmadcode/BMAD-METHOD) and [claude-task-master](https://github.com/eyaltoledano/claude-task-master).
 
-For the developer condensing [`CODE-RULES.md`](./CODE-RULES.md) down into rules specific to each IDE:
+## License
 
-1. Update [`CODE-RULES.md`](./CODE-RULES.md).
-2. Run this prompt to shorten for Windsurf/Roo/GitHub:
-
-```prompt
-Given the following AI IDE <RULES>, shorten the wording to save on tokens, but make sure the intent, spirit, and technical details of each guideline are kept so an AI can clearly understand it. Return these rules in markdown format that can be copy/pasted.
-<RULES>
-<!-- Content of CODE-RULES.md here -->
-</RULES>
-```
-
-3. Place output of prompt into [`CODE-RULES-CONDENSED.md`](./CODE-RULES-CONDENSED.md)
-4. Run `python update-rules.py`.
-5. Update your rules in your projects as needed.
----
+This project is licensed under the MIT License. See [LICENSE](docs/LICENSE) for details.
