@@ -14,6 +14,7 @@ TEMPLATE_FILES_INFO = [
     {"path": os.path.join(GEM_SOURCE_DIR, "PROD_PRD_TEMPLATE.md"), "tag": "PROD_PRD_TEMPLATE"},
     {"path": os.path.join(GEM_SOURCE_DIR, "PROTO_PRD_TEMPLATE.md"), "tag": "PROTO_PRD_TEMPLATE"},
     {"path": os.path.join(GEM_SOURCE_DIR, "TASKS_TEMPLATE.md"), "tag": "TASKS_TEMPLATE"},
+    {"path": os.path.join(GEM_SOURCE_DIR, "OPERATIONAL_GUIDELINES_TEMPLATE.md"), "tag": "OPERATIONAL_GUIDELINES_TEMPLATE"},
 ]
 
 AGENT_PROMPT_SOURCE = os.path.join(GEM_SOURCE_DIR, "agent-prompt.md")
@@ -49,12 +50,11 @@ def create_directories():
     print(f"Successfully created directory: {os.path.abspath(BUILD_IDE_RULES_DIR)}")
 
     # Create subdirectories for IDE rules
-    os.makedirs(os.path.join(BUILD_DIR, ".cursor", "rules"), exist_ok=True) # Moved .cursor to be directly under build
+    os.makedirs(os.path.join(BUILD_IDE_RULES_DIR, ".cursor", "rules"), exist_ok=True) # .cursor now under ide-rules
     os.makedirs(os.path.join(BUILD_IDE_RULES_DIR, ".github"), exist_ok=True)
     os.makedirs(os.path.join(BUILD_IDE_RULES_DIR, ".roo", "rules-code"), exist_ok=True) # Updated Roo path
     os.makedirs(os.path.join(BUILD_IDE_RULES_DIR, ".windsurf", "rules"), exist_ok=True)
-    print(f"  Created subdirectories: {os.path.abspath(os.path.join(BUILD_DIR, '.cursor', 'rules'))}")
-    print(f"  Created subdirectories within {os.path.abspath(BUILD_IDE_RULES_DIR)} for .github, .roo/rules-code, .windsurf\n")
+    print(f"  Created subdirectories within {os.path.abspath(BUILD_IDE_RULES_DIR)} for .cursor/rules, .github, .roo/rules-code, .windsurf\n")
 
 
 def build_agent_prompt():
@@ -102,7 +102,7 @@ def build_rules_files():
         print(f"  Read content from '{abs_dev_rules_source}'")
 
         # Cursor rules
-        cursor_rules_path = os.path.join(BUILD_DIR, ".cursor", "rules", "global.mdc") # Updated Cursor path
+        cursor_rules_path = os.path.join(BUILD_IDE_RULES_DIR, ".cursor", "rules", "global.mdc") # .cursor now under ide-rules
         abs_cursor_rules_path = os.path.abspath(cursor_rules_path)
         with open(cursor_rules_path, "w", encoding="utf-8") as f_cursor:
             f_cursor.write(CURSOR_RULES_PREPEND)
