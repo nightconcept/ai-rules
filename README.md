@@ -12,31 +12,33 @@
 
 ### Setup Gemini Gems
 
-1.  Run `mise install` if Python is not already on your system.
-2.  Run `mise run build` or `python scripts/build.py`.
-3.  Open Google Gemini's Gem page.
-4.  Create a new Gem.
-4.  From the `build/gem` folder, the `agent-prompt.txt` should be pasted into the instructions box. All other txt files should be added to the Knowledge box.
-5.  Start prompting.
+1. Run `mise install` if Python is not already on your system.
+2. Run `mise run build` or `python scripts/build.py`.
+3. Open Google Gemini's Gem page.
+4. Create a new Gem.
+5. From the `build/gem` folder, the `agent-prompt.txt` should be pasted into the instructions box. All other txt files should be added to the Knowledge box.
+6. Start prompting.
 
 ### Setup Dev Agent Rules
 
-1.  Run `mise install` if Python 3.13+ is not already on your system.
-2.  Run `mise run build` or `python scripts/build.py`.
-3.  Copy over applicable files from `build/ide-rules` based on your IDE(s) to your project folders.
-4.  Start prompting. _(Note: Roo Code rules only)
+1. Run `mise install` if Python 3.13+ is not already on your system.
+2. Run `mise run build` or `python scripts/build.py`.
+3. Copy over applicable files from `build/ide-rules` based on your IDE(s) to your project folders.
+4. Start prompting. _(Note: Roo Code rules only)
 
 ## Working with Terra
 
 Terra guides users through planning software projects using an AI assistant, the "Agile Project Planner," facilitated by a Google Gemini Gem. This assistant helps generate `PRD.md` (Product Requirements Document) and `TASKS.md` (Task List) files. The process is driven by user-selected workflows and templates.
 
--   **Gemini Workflows:** The user chooses one of three workflows:
-    1.  **Prototyper:** For rapidly planning small-scale prototypes.
-    2.  **Product Developer Workflow (PDW):** For planning the foundations of a new, larger product that will be iterated on with modular features developed by the Feature Development Workflow.
-    3.  **Feature Developer Workflow (FDW):** For planning a new feature for an existing product. Requires a product `PRD.md` of an existing product. A digest from gitingest is recommended.
--   **Collaborative Process:** The AI engages in a dialogue with the user, asking clarifying questions and refining document drafts based on feedback.
--   **Output:** The final outputs are clean Markdown-formatted `PRD.md` and `TASKS.md` files, to be placed in the project's `docs/` directory or features `docs/feat/<feat_name>`.
+- **Gemini Workflows:** The user chooses one of four workflows:
 
+  1. **Prototyper:** For rapidly planning small-scale prototypes.
+  2. **Product Developer Workflow (PDW):** For planning the foundations of a new, larger product that will be iterated on with modular features developed by the Feature Development Workflow.
+  3. **Feature Developer Workflow (FDW):** For planning a new feature for an existing product. Requires a product `PRD.md` of an existing product. A digest from gitingest is recommended.
+  4. **Operational Guidelines Workflow (OGW):** For collaboratively defining and generating a comprehensive `operational-guidelines.md` file, covering coding standards, testing strategies, error handling, security protocols, and other project-specific conventions. This document serves as a key reference for development and the Dev Agent.
+
+- **Collaborative Process:** The AI engages in a dialogue with the user, asking clarifying questions and refining document drafts based on feedback.
+- **Output:** The final outputs are clean Markdown-formatted `PRD.md` and `TASKS.md` files, to be placed in the project's `docs/` directory or features `docs/feat/<feat_name>`.
 
 ## References
 
